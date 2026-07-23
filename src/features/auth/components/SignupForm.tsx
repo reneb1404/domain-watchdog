@@ -7,8 +7,8 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
-import { signUp } from "../lib/auth-client";
-import { SignupInput, signupSchema } from "../schema";
+import { signupWithEmail } from "../lib/auth-actions";
+import { SignupInput, signupSchema } from "../lib/schema";
 
 export default function SignupForm() {
 	const router = useRouter();
@@ -24,7 +24,7 @@ export default function SignupForm() {
 	async function onSubmit(input: SignupInput) {
 		setServerError(null);
 
-		const { error } = await signUp.email(input);
+		const { error } = await signupWithEmail(input);
 
 		if (error) {
 			setServerError(error.message || null);

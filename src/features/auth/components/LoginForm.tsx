@@ -7,8 +7,8 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
-import { signIn } from "../lib/auth-client";
-import { LoginInput, loginSchema } from "../schema";
+import { loginWithEmail } from "../lib/auth-actions";
+import { LoginInput, loginSchema } from "../lib/schema";
 
 export default function LoginForm() {
 	const router = useRouter();
@@ -24,7 +24,7 @@ export default function LoginForm() {
 	async function onSubmit(input: LoginInput) {
 		setServerError("");
 
-		const { error } = await signIn.email(input);
+		const { error } = await loginWithEmail(input);
 
 		if (error) {
 			setServerError(error.message || "Failed to log in.");
