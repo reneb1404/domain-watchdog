@@ -10,7 +10,7 @@ import { useForm } from "react-hook-form";
 import { loginWithEmail } from "../lib/auth-actions";
 import { LoginInput, loginSchema } from "../lib/schema";
 
-export default function LoginForm() {
+export function LoginForm() {
 	const router = useRouter();
 	const [serverError, setServerError] = useState<string>("");
 	const {
@@ -31,7 +31,7 @@ export default function LoginForm() {
 			return;
 		}
 
-		router.push("/dashboard");
+		router.push("/domains");
 	}
 
 	return (

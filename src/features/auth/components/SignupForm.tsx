@@ -10,7 +10,7 @@ import { useForm } from "react-hook-form";
 import { signupWithEmail } from "../lib/auth-actions";
 import { SignupInput, signupSchema } from "../lib/schema";
 
-export default function SignupForm() {
+export function SignupForm() {
 	const router = useRouter();
 	const [serverError, setServerError] = useState<string | null>(null);
 	const {

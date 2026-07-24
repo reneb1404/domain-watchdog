@@ -9,7 +9,7 @@ export function ResetPasswordEmail({ resetUrl }: ResetPasswordEmailProps) {
 	return (
 		<Html>
 			<Container>
-				<Text>CLick on the link to reset your password:</Text>
+				<Text>Click on the link to reset your password.</Text>
 				<Button href={resetUrl}>Reset password</Button>
 			</Container>
 		</Html>

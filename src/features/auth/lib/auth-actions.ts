@@ -83,14 +83,17 @@ export async function forgetPassword(input: ForgotPasswordInput) {
 	return { data, error };
 }
 
-export async function passwordReset(input: ResetPasswordInput) {
+export async function passwordReset(input: ResetPasswordInput, token: string) {
 	const parsed = resetPasswordSchema.safeParse(input);
 
 	if (!parsed.success) {
 		return { data: null, error: { message: parsed.error.issues[0].message } };
 	}
 
-	const { data, error } = await resetPassword({ newPassword: input.password });
+	const { data, error } = await resetPassword({
+		newPassword: input.password,
+		token: token,
+	});
 
 	if (error) {
 		return {
